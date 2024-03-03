@@ -7,6 +7,7 @@ WORKDIR /serverdata
 COPY requirements.txt .
 
 COPY app /serverdata/app
+COPY app/random_text_file.txt /serverdata/app/random_text_file.txt
 
 RUN pip install --no-cache-dir -r requirements.txt
 
