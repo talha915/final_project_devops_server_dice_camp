@@ -3,7 +3,7 @@ import os
 import hashlib
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 
 app = FastAPI()
 
@@ -44,4 +44,5 @@ async def generate_file():
 
     # Return JSON response with status code 200
     response_data = {"checksum": checksum, "content": file_content}
-    return JSONResponse(content=response_data, status_code=200)
+    # return JSONResponse(content=response_data, status_code=200)
+    return FileResponse(path=file_path, filename="random_text_file.txt", headers={"checksum": checksum})
